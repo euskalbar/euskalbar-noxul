@@ -57,147 +57,47 @@ var frame = new Frame({
               break;
             } else if (tab.index == tabs.length-1) {
               if (urlb.indexOf(urlz) == -1){
-                  tabs.open({
-                  url:e.data.getUrl,
-                  onReady: function(tab) {
-                      if (e.data.metodoa == "POSTquery"){
-                        worker = tab.attach({
-                        contentScriptFile:[
-                        self.data.url("dicts.js"),
-                        self.data.url("dicts/"+e.data.izena+".js")
-                        ]
-                        });
-                        worker.port.emit("exekutatu", JSON.stringify({"testua":testukutxa,"source":e.data.source,"target":e.data.target , "params" : e.data.params , "izena" : e.data.izena }));
-                      } else {
-                      }
-                }//.onReady: function(tab) {
-                }); //. tabs.open({
+                  enter_click_context_Euskalbar(e,testukutxa);
               }
             }
             }//for (let tab of tabs){
         } else {
-          tabs.open({
-          url:e.data.getUrl,
-          onReady: function(tab) {
-              if (e.data.metodoa == "POSTquery"){
-                worker = tab.attach({
-                contentScriptFile:[
-                self.data.url("dicts.js"),
-                self.data.url("dicts/"+e.data.izena+".js")
-                ]
-                });
-                worker.port.emit("exekutatu", JSON.stringify({"testua":testukutxa,"source":e.data.source,"target":e.data.target , "params" : e.data.params , "izena" : e.data.izena }));
-              } else {
-              }
-        }//.onReady: function(tab) {
-        }); //. tabs.open({
+          enter_click_context_Euskalbar(e,testukutxa);
         } //.else (preferences.fitxakberrerabili == true){    
       } else if (e.data.event == "ctrl"){
         if (preferences.fitxakberrerabili == true){
           for (let tab of tabs){
             if (tab.url == "resource://euskalbar-plugin/data/ctrlEuskalbar.html"){
-              tab.reload();
+              tab.close();
+              ctrlEuskalbar(e,testukutxa);
               break;
             } else if (tab.index == tabs.length-1) {
                if (tab.url != "resource://euskalbar-plugin/data/ctrlEuskalbar.html"){
-                  tabs.open({
-                    url:"./ctrlEuskalbar.html",
-                    onReady: function(tab) {
-                          var cssctrl = preferences.azala;
-                          var ctrlPreferences = JSON.parse(e.data.ctrlPreferences);
-                          var attachscriptctrl = [self.data.url("jquery-1.12.3.js"),
-                          self.data.url("dicts.js"),
-                          self.data.url("ctrlEuskalbar.js")];
-                          for (var i=0;i<Object.getOwnPropertyNames(ctrlPreferences).length;i++){
-                            var urlizenactrl = Object.getOwnPropertyNames(ctrlPreferences)[i].substr(0,Object.getOwnPropertyNames(ctrlPreferences)[i].indexOf("_ctrl+enter"));
-                            urlizenactrl = self.data.url("dicts/"+urlizenactrl+".js");
-                            attachscriptctrl.push(urlizenactrl);
-                          }
-                          worker = tab.attach({
-                          contentScriptFile:attachscriptctrl
-                          });
-
-                          worker.port.emit("ajax", JSON.stringify({"hizkuntza" : e.data.hizkuntza , "testua":testukutxa , "ctrlPreferences" : JSON.parse(e.data.ctrlPreferences) , "cssctrl": cssctrl }));
-                  }
-                  });
+                  ctrlEuskalbar(e,testukutxa);
                }
             } else {
             }//.else if (tab.url == "resource://euskalbar-plugin/data/ctrlEuskalbar.html"){
           }//.for (let tab of tabs){
         }//.if (preferences.fitxakberrerabili == true){
          else {
-        tabs.open({
-          url:"./ctrlEuskalbar.html",
-          onReady: function(tab) {
-                var cssctrl = preferences.azala;
-                var ctrlPreferences = JSON.parse(e.data.ctrlPreferences);
-                var attachscriptctrl = [self.data.url("jquery-1.12.3.js"),
-                self.data.url("dicts.js"),
-                self.data.url("ctrlEuskalbar.js")];
-                for (var i=0;i<Object.getOwnPropertyNames(ctrlPreferences).length;i++){
-                  var urlizenactrl = Object.getOwnPropertyNames(ctrlPreferences)[i].substr(0,Object.getOwnPropertyNames(ctrlPreferences)[i].indexOf("_ctrl+enter"));
-                  urlizenactrl = self.data.url("dicts/"+urlizenactrl+".js");
-                  attachscriptctrl.push(urlizenactrl);
-                }
-                worker = tab.attach({
-                contentScriptFile:attachscriptctrl
-                });
-
-                worker.port.emit("ajax", JSON.stringify({"hizkuntza" : e.data.hizkuntza , "testua":testukutxa , "ctrlPreferences" : JSON.parse(e.data.ctrlPreferences) , "cssctrl": cssctrl }));
-        }
-        }); 
+            ctrlEuskalbar(e,testukutxa);
         } 
       } else if (e.data.event == "shift"){
         if (preferences.fitxakberrerabili == true){
           for (let tab of tabs){
             if (tab.url == "resource://euskalbar-plugin/data/shiftEuskalbar.html"){
-              tab.reload();
+              tab.close();
+              shiftEuskalbar(e,testukutxa);
               break;
             } else if (tab.index == tabs.length-1) {
                if (tab.url != "resource://euskalbar-plugin/data/shiftEuskalbar.html"){
-                  tabs.open({
-                    url:"./shiftEuskalbar.html",
-                    onReady: function(tab) {
-                        var cssshift = preferences.azala;
-                        var shiftPreferences = JSON.parse(e.data.shiftPreferences);
-                        var attachscriptshift = [self.data.url("jquery-1.12.3.js"),
-                        self.data.url("dicts.js"),
-                        self.data.url("shiftEuskalbar.js")];
-                        for (var i=0;i<Object.getOwnPropertyNames(shiftPreferences).length;i++){
-                          var urlizenashift = Object.getOwnPropertyNames(shiftPreferences)[i].substr(0,Object.getOwnPropertyNames(shiftPreferences)[i].indexOf("_shift+enter"));
-                          urlizenashift = self.data.url("dicts/"+urlizenashift+".js");
-                          attachscriptshift.push(urlizenashift);
-                        }
-                        worker = tab.attach({
-                        contentScriptFile:attachscriptshift
-                        });
-                        worker.port.emit("ajax", JSON.stringify({"hizkuntza" : e.data.hizkuntza , "testua": testukutxa, "shiftPreferences" : shiftPreferences , "cssshift": cssshift }));
-                }
-                  });
+                  shiftEuskalbar(e,testukutxa);
                }
             } else {
             }//.else if (tab.url == "resource://euskalbar-plugin/data/shiftEuskalbar.html"){
           }//.for (let tab of tabs){          
         } else {
-          tabs.open({
-            url:"./shiftEuskalbar.html",
-            onReady: function(tab) {
-                  var cssshift = preferences.azala;
-                  var shiftPreferences = JSON.parse(e.data.shiftPreferences);
-                  var attachscriptshift = [self.data.url("jquery-1.12.3.js"),
-                  self.data.url("dicts.js"),
-                  self.data.url("shiftEuskalbar.js")];
-                  for (var i=0;i<Object.getOwnPropertyNames(shiftPreferences).length;i++){
-                    var urlizenashift = Object.getOwnPropertyNames(shiftPreferences)[i].substr(0,Object.getOwnPropertyNames(shiftPreferences)[i].indexOf("_shift+enter"));
-                    urlizenashift = self.data.url("dicts/"+urlizenashift+".js");
-                    attachscriptshift.push(urlizenashift);
-                  }
-                  worker = tab.attach({
-                  contentScriptFile:attachscriptshift
-                  });
-                  worker.port.emit("ajax", JSON.stringify({"hizkuntza" : e.data.hizkuntza , "testua": testukutxa, "shiftPreferences" : shiftPreferences , "cssshift": cssshift }));
-          }
-          }); //.tabs.open({
+          shiftEuskalbar(e,testukutxa);
         }
       } else if (e.data.event == "hobespenakdei"){
         dictsfitxategia = e.data.dictsfitxategia;
@@ -222,6 +122,14 @@ var frame = new Frame({
           items: []
         });
         //PAIRS ARRAY 21 - 21 ONDO
+
+        var sinonimoakmenu = cm.Menu({
+          label: "Sinonimoak",
+          items: [] ,
+          parentMenu: euskalbarMenu
+        });//menuak sortzen ditu
+
+
       for (var b=0;b<pairsArray.length;b++){
         var source = pairsArray[b].substr(0,2);
         var target = pairsArray[b].substr(3,5);
@@ -242,15 +150,40 @@ var frame = new Frame({
               var pairskop = contextArray[f].pairslength;
               for (var g=0;g<pairskop;g++){
                 if (contextArray[f].pairs[g].indexOf(pairsArray[b]) != -1 ) {
-                var contizena = contextizena+"_"+source+"_"+target+"_item";
-                var contizenaeditatuta = contizena;
-                var parentmenuizena = source+"_"+target+"_Menu";
-                contizenaeditatuta = cm.Item({
-                label: contextArray[f].displayName,
-                data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
-                parentMenu: menuizenaeditatuta
-              });
-                menuizenaeditatuta.addItem(contizenaeditatuta);
+                  if (contextArray[f].name == "adorez" || contextArray[f].name == "uzei" && pairsArray[b] == "eu-eu"){
+                  var contizena = contextizena+"_"+source+"_"+target+"_item";
+                  var contizenaeditatuta = contizena;
+                  var parentmenuizena = source+"_"+target+"_Menu";
+                  contizenaeditatuta = cm.Item({
+                  label: contextArray[f].displayName,
+                  data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
+                  parentMenu: sinonimoakmenu
+                });
+                } else if (contextArray[f].name == "elebila" || contextArray[f].name == "xuxenweb" && pairsArray[b] == "eu-eu" ){
+                    if (contextArray[f].name == "elebila"){
+                      var elebilaitem = cm.Item({
+                        label: contextArray[f].displayName,
+                        data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
+                        parentMenu: euskalbarMenu
+                      });
+                    } else {
+                      var xuxenitem = cm.Item({
+                        label: contextArray[f].displayName,
+                        data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
+                        parentMenu: euskalbarMenu
+                      });                      
+                    }
+                } else {
+                    var contizena = contextizena+"_"+source+"_"+target+"_item";
+                    var contizenaeditatuta = contizena;
+                    var parentmenuizena = source+"_"+target+"_Menu";
+                    contizenaeditatuta = cm.Item({
+                    label: contextArray[f].displayName,
+                    data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
+                    parentMenu: menuizenaeditatuta
+                  });
+                    menuizenaeditatuta.addItem(contizenaeditatuta);
+                }
               }
               }
             }
@@ -259,20 +192,48 @@ var frame = new Frame({
               var contextizena = contextArray[c];
                 var pairsaldagai = contextArray[c].pairs;
               if (pairsaldagai.indexOf(pairsArray[b]) != -1 ) {
-                var contizena = contextizena+"_"+source+"_"+target+"_item";
-                var contizenaeditatuta = contizena;
-                var parentmenuizena = source+"_"+target+"_Menu";
-                contizenaeditatuta = cm.Item({
-                label: contextizena.displayName,
-                data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
-                parentMenu: menuizenaeditatuta
-              });
-                menuizenaeditatuta.addItem(contizenaeditatuta);
+                if (contextizena.name == "adorez" || contextizena.name == "uzei" && pairsArray[b] == "eu-eu"){
+                  var contizena = contextizena+"_"+source+"_"+target+"_item";
+                  var contizenaeditatuta = contizena;
+                  var parentmenuizena = source+"_"+target+"_Menu";
+                  contizenaeditatuta = cm.Item({
+                  label: contextizena.displayName,
+                  data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
+                  parentMenu: sinonimoakmenu
+                });
+                } else if (contextizena.name == "elebila" || contextizena.name == "xuxenweb" && pairsArray[b] == "eu-eu" ){
+                    if (contextizena.name == "elebila"){
+                      var elebilaitem = cm.Item({
+                        label: contextizena.displayName,
+                        data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
+                        parentMenu: euskalbarMenu
+                      });
+                    } else {
+                      var xuxenitem = cm.Item({
+                        label: contextizena.displayName,
+                        data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
+                        parentMenu: euskalbarMenu
+                      });                      
+                    }
+                } else {
+                  var contizena = contextizena+"_"+source+"_"+target+"_item";
+                  var contizenaeditatuta = contizena;
+                  var parentmenuizena = source+"_"+target+"_Menu";
+                  contizenaeditatuta = cm.Item({
+                  label: contextizena.displayName,
+                  data: JSON.stringify({"source" : source , "target" : target , "izena":contextizena}), 
+                  parentMenu: menuizenaeditatuta
+                });
+                  menuizenaeditatuta.addItem(contizenaeditatuta);
+                }
               }
             }////for (var c=0;c<contextArray.length;c++){
          }
         euskalbarMenu.addItem(menuizenaeditatuta);
       }//.for (var b=0;b<pairsArray2.length;b++){
+        euskalbarMenu.addItem(sinonimoakmenu);
+        euskalbarMenu.addItem(elebilaitem);
+        euskalbarMenu.addItem(xuxenitem);
     } else if (e.data.event == "eratesmenuaezabatu"){
       eratesmenuaezabatu(euskalbarMenu);
     }
@@ -280,6 +241,68 @@ var frame = new Frame({
   }//.onMessage: (e) => {
 });//.var frame = new Frame({
 
+function shiftEuskalbar(e,testukutxa){
+            tabs.open({
+            url:"./shiftEuskalbar.html",
+            onReady: function(tab) {
+                  var cssshift = preferences.azala;
+                  var shiftPreferences = JSON.parse(e.data.shiftPreferences);
+                  var attachscriptshift = [self.data.url("jquery-1.12.3.js"),
+                  self.data.url("dicts.js"),
+                  self.data.url("shiftEuskalbar.js")];
+                  for (var i=0;i<Object.getOwnPropertyNames(shiftPreferences).length;i++){
+                    var urlizenashift = Object.getOwnPropertyNames(shiftPreferences)[i].substr(0,Object.getOwnPropertyNames(shiftPreferences)[i].indexOf("_shift+enter"));
+                    urlizenashift = self.data.url("dicts/"+urlizenashift+".js");
+                    attachscriptshift.push(urlizenashift);
+                  }
+                  worker = tab.attach({
+                  contentScriptFile:attachscriptshift
+                  });
+                  worker.port.emit("ajax", JSON.stringify({"hizkuntza" : e.data.hizkuntza , "testua": testukutxa, "shiftPreferences" : shiftPreferences , "cssshift": cssshift }));
+          }
+          }); //.tabs.open({
+}
+
+function ctrlEuskalbar(e,testukutxa){
+          tabs.open({
+          url:"./ctrlEuskalbar.html",
+          onReady: function(tab) {
+                var cssctrl = preferences.azala;
+                var ctrlPreferences = JSON.parse(e.data.ctrlPreferences);
+                var attachscriptctrl = [self.data.url("jquery-1.12.3.js"),
+                self.data.url("dicts.js"),
+                self.data.url("ctrlEuskalbar.js")];
+                for (var i=0;i<Object.getOwnPropertyNames(ctrlPreferences).length;i++){
+                  var urlizenactrl = Object.getOwnPropertyNames(ctrlPreferences)[i].substr(0,Object.getOwnPropertyNames(ctrlPreferences)[i].indexOf("_ctrl+enter"));
+                  urlizenactrl = self.data.url("dicts/"+urlizenactrl+".js");
+                  attachscriptctrl.push(urlizenactrl);
+                }
+                worker = tab.attach({
+                contentScriptFile:attachscriptctrl
+                });
+
+                worker.port.emit("ajax", JSON.stringify({"hizkuntza" : e.data.hizkuntza , "testua":testukutxa , "ctrlPreferences" : JSON.parse(e.data.ctrlPreferences) , "cssctrl": cssctrl }));
+        }
+        });
+}
+
+function enter_click_context_Euskalbar(e,testukutxa){
+            tabs.open({
+          url:e.data.getUrl,
+          onReady: function(tab) {
+              if (e.data.metodoa == "POSTquery"){
+                worker = tab.attach({
+                contentScriptFile:[
+                self.data.url("dicts.js"),
+                self.data.url("dicts/"+e.data.izena+".js")
+                ]
+                });
+                worker.port.emit("exekutatu", JSON.stringify({"testua":testukutxa,"source":e.data.source,"target":e.data.target , "params" : e.data.params , "izena" : e.data.izena }));
+              } else {
+              }
+        }//.onReady: function(tab) {
+        }); //. tabs.open({
+}
 
 frame.on("ready", initbuttons);
 

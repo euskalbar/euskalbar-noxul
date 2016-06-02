@@ -225,7 +225,7 @@
       "description": "automatikoak",
       "type": "bool",
       "name": "automatikoak",
-      "value": false,
+      "value": true,
       "title": "automatikoak",
       "hidden": true
     },
@@ -233,7 +233,7 @@
       "description": "batua",
       "type": "bool",
       "name": "batua",
-      "value": false,
+      "value": true,
       "title": "batua",
       "hidden": true
     },
@@ -329,7 +329,7 @@
       "description": "elhuyar",
       "type": "bool",
       "name": "elhuyar",
-      "value": false,
+      "value": true,
       "title": "elhuyar",
       "hidden": true
     },
