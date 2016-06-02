@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Euskalbarren hobespenak</title>
+  <link rel="stylesheet" href="./jquery-ui.css">
+  <script src="./jquery-1.12.3.js"></script>
+  <script src="./jquery-ui.js"></script>
+  <script src="./hobespenak.js"></script>
+  <link rel="stylesheet" href="./hobespenak.css">
+</head>
+<body>
+<script type="text/javascript">
+	$(function() {
+        $( "#tabs" ).tabs();
+      $( "#tabs-3" ).tabs();
+	});
+</script>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Orokorra</a></li>
+    <li><a href="#tabs-2">Hiztegiak</a></li>
+    <li><a href="#tabs-3">Aurreratua</a></li>
+  </ul>
+  <div id="tabs-1">
+ 	<h3> Hizkuntza lehenetsia</h3>
+  	<p> Euskalbar adieraztean ondorengo hizkuntza aldatu</p>
+  	<div id="hizkuntzadiv">
+  	</div>
+    <h3> Fitxen hobespenak</h3>
+    <div id="fitxenhobespenakdiv">
+  	</div>
+    <h3> Azala</h3>
+    <div id="azaladiv">
+  	</div>
+    <h3>Interfazea</h3>
+    <div id="interfazeadiv">
+  	</div>
+</div>
+  <div id="tabs-2">
+    <h3>Barran ikusgai dauden hiztegiak</h3>
+    <div id="hobes_hiztegiak">
+     </div>
+  </div>
+  <div id="tabs-3">
+	  <ul>
+	    <li><a href="#tabs-3.1">Enter</a></li>
+	    <li><a href="#tabs-3.2">Shift+Enter</a></li>
+	    <li><a href="#tabs-3.3">Ctrl+Enter</a></li>
+	  </ul>
+	  <div id="tabs-3.1">
+	    <div id="enter_hiztegiak">
+			</div>
+	</div>
+	<div id="tabs-3.2">
+	    <div id="shift+enter_hiztegiak">
+			</div>
+	</div>
+	<div id="tabs-3.3">
+	    <div id="ctrl+enter_hiztegiak">
+			</div>  	
+	</div>
+	<h3>Kontsulta konbinatuen aukerak</h3>
+	<div id=denboradiv>
+	</div>
+  </div>
+  <input type="button" name="close" id="close" value="Close">
+  <input type="button" name="save" id="save" value="Save">
+</div>
+</body>
+</html>

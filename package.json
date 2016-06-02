@@ -1,0 +1,1409 @@
+{
+  "title": "euskalbar",
+  "name": "euskalbar-plugin",
+  "version": "0.0.1",
+  "description": "euskalbar plugin for firefox with sdk",
+  "main": "main.js",
+  "author": "egoitz barrena",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ],
+  "permissions": {
+    "cross-domain-content": [
+      "http://www.bostakbat.org/azkue/index.php",
+      "http://www.euskaltzaindia.eus/hiztegibatua",
+      "http://www.bostakbat.org/azkue/index.php?q=3",
+      "http://hiztegia.danobatgroup.eus/",
+      "http://hiztegiak.elhuyar.eus",
+      "http://www.euskara.euskadi.eus/euskalterm/",
+      "http://intza.armiarma.eus/",
+      "http://hiztegia.labayru.eus",
+      "https://hiztegia.labayru.eus",
+      "http://www1.euskadi.net/morris/",
+      "http://www.euskaltzaindia.eus/oeh",
+      "http://www.uzei.eus/zerbitzuak-eta-produktuak/produktuen-katalogoa/sinonimoen-hiztegia/",
+      "http://ehu.eus/ehg/cgi/zehazki/bila"
+    ]
+  },
+  "preferences": [
+    {
+      "name": "hizkuntza",
+      "type": "menulist",
+      "title": "hizkuntza",
+      "value": "es>eu",
+      "options": [
+        {
+          "value": "eu>ar",
+          "label": "EU>AR"
+        },
+        {
+          "value": "ar>eu",
+          "label": "AR>EU"
+        },
+        {
+          "value": "eu>de",
+          "label": "EU>DE"
+        },
+        {
+          "value": "de>eu",
+          "label": "DE>EU"
+        },
+        {
+          "value": "eu>en",
+          "label": "EU>EN"
+        },
+        {
+          "value": "en>eu",
+          "label": "EN>EU"
+        },
+        {
+          "value": "eu>es",
+          "label": "EU>ES"
+        },
+        {
+          "value": "es>eu",
+          "label": "ES>EU"
+        },
+        {
+          "value": "eu>fr",
+          "label": "EU>FR"
+        },
+        {
+          "value": "fr>eu",
+          "label": "FR>EU"
+        },
+        {
+          "value": "eu>hi",
+          "label": "EU>HI"
+        },
+        {
+          "value": "hi>eu",
+          "label": "HI>EU"
+        },
+        {
+          "value": "eu>jp",
+          "label": "EU>JP"
+        },
+        {
+          "value": "jp>eu",
+          "label": "JP>EU"
+        },
+        {
+          "value": "eu>la",
+          "label": "EU>LA"
+        },
+        {
+          "value": "la>eu",
+          "label": "LA>EU"
+        },
+        {
+          "value": "eu>oc",
+          "label": "EU>OC"
+        },
+        {
+          "value": "oc>eu",
+          "label": "OC>EU"
+        },
+        {
+          "value": "eu>sw",
+          "label": "EU>SW"
+        },
+        {
+          "value": "sw>eu",
+          "label": "SW>EU"
+        },
+        {
+          "value": "eu>zh",
+          "label": "EU>ZH"
+        },
+        {
+          "value": "zh>eu",
+          "label": "ZH>EU"
+        }
+      ],
+      "hidden": true
+    },
+    {
+      "description": "fitxakberrerabili",
+      "type": "bool",
+      "name": "fitxakberrerabili",
+      "value": true,
+      "title": "fitxak_berrerabili",
+      "hidden": true
+    },
+    {
+      "description": "fitxakatzean",
+      "type": "bool",
+      "name": "fitxakatzean",
+      "value": false,
+      "title": "fitxakatzean",
+      "hidden": true
+    },
+    {
+      "name": "azala",
+      "type": "menulist",
+      "title": "azala",
+      "value": "euskalbar",
+      "options": [
+        {
+          "value": "euskalbar",
+          "label": "Euskalbar"
+        },
+        {
+          "value": "human",
+          "label": "Human"
+        },
+        {
+          "value": "oliba",
+          "label": "Oliba"
+        },
+        {
+          "value": "urgarden",
+          "label": "Urgarden"
+        },
+        {
+          "value": "grisleun",
+          "label": "Grisleun"
+        }
+      ],
+      "hidden": true
+    },
+    {
+      "description": "erahiztmenua",
+      "type": "bool",
+      "name": "erahiztmenua",
+      "value": true,
+      "title": "erahiztmenua",
+      "hidden": true
+    },
+    {
+      "description": "eratesmenua",
+      "type": "bool",
+      "name": "eratesmenua",
+      "value": true,
+      "title": "eratesmenua",
+      "hidden": true
+    },
+    {
+      "description": "fokuakutxan",
+      "type": "bool",
+      "name": "fokuakutxan",
+      "value": true,
+      "title": "fokuakutxan",
+      "hidden": true
+    },
+    {
+      "description": "adorez",
+      "type": "bool",
+      "name": "adorez",
+      "value": false,
+      "title": "adorez",
+      "hidden": true
+    },
+    {
+      "description": "aunamendi",
+      "type": "bool",
+      "name": "aunamendi",
+      "value": false,
+      "title": "aunamendi",
+      "hidden": true
+    },
+    {
+      "description": "automobilgintza",
+      "type": "bool",
+      "name": "automobilgintza",
+      "value": false,
+      "title": "automobilgintza",
+      "hidden": true
+    },
+    {
+      "description": "automatikoak",
+      "type": "bool",
+      "name": "automatikoak",
+      "value": false,
+      "title": "automatikoak",
+      "hidden": true
+    },
+    {
+      "description": "batua",
+      "type": "bool",
+      "name": "batua",
+      "value": false,
+      "title": "batua",
+      "hidden": true
+    },
+    {
+      "description": "bergara",
+      "type": "bool",
+      "name": "bergara",
+      "value": false,
+      "title": "bergara",
+      "hidden": true
+    },
+    {
+      "description": "berria",
+      "type": "bool",
+      "name": "berria",
+      "value": false,
+      "title": "berria",
+      "hidden": true
+    },
+    {
+      "description": "bfaterminologikoa",
+      "type": "bool",
+      "name": "bfaterminologikoa",
+      "value": false,
+      "title": "bfaterminologikoa",
+      "hidden": true
+    },
+    {
+      "description": "bizkaiera",
+      "type": "bool",
+      "name": "bizkaiera",
+      "value": false,
+      "title": "bizkaiera",
+      "hidden": true
+    },
+    {
+      "description": "bostmila",
+      "type": "bool",
+      "name": "bostmila",
+      "value": false,
+      "title": "bostmila",
+      "hidden": true
+    },
+    {
+      "description": "consumer",
+      "type": "bool",
+      "name": "consumer",
+      "value": false,
+      "title": "consumer",
+      "hidden": true
+    },
+    {
+      "description": "corpeus",
+      "type": "bool",
+      "name": "corpeus",
+      "value": false,
+      "title": "corpeus",
+      "hidden": true
+    },
+    {
+      "description": "danobat",
+      "type": "bool",
+      "name": "danobat",
+      "value": false,
+      "title": "danobat",
+      "hidden": true
+    },
+    {
+      "description": "ehuskaratuak",
+      "type": "bool",
+      "name": "ehuskaratuak",
+      "value": false,
+      "title": "ehuskaratuak",
+      "hidden": true
+    },
+    {
+      "description": "eibar",
+      "type": "bool",
+      "name": "eibar",
+      "value": false,
+      "title": "eibar",
+      "hidden": true
+    },
+    {
+      "description": "elebila",
+      "type": "bool",
+      "name": "elebila",
+      "value": false,
+      "title": "elebila",
+      "hidden": true
+    },
+    {
+      "description": "elhuyar",
+      "type": "bool",
+      "name": "elhuyar",
+      "value": false,
+      "title": "elhuyar",
+      "hidden": true
+    },
+    {
+      "description": "elhuyarwebcorpusaeu",
+      "type": "bool",
+      "name": "elhuyarwebcorpusaeu",
+      "value": false,
+      "title": "elhuyarwebcorpusaeu",
+      "hidden": true
+    },
+    {
+      "description": "elhuyarwebcorpusaeues",
+      "type": "bool",
+      "name": "elhuyarwebcorpusaeues",
+      "value": false,
+      "title": "elhuyarwebcorpusaeues",
+      "hidden": true
+    },
+    {
+      "description": "elhuyarwebcorpusakonbinazioak",
+      "type": "bool",
+      "name": "elhuyarwebcorpusakonbinazioak",
+      "value": false,
+      "title": "elhuyarwebcorpusakonbinazioak",
+      "hidden": true
+    },
+    {
+      "description": "energia",
+      "type": "bool",
+      "name": "energia",
+      "value": false,
+      "title": "energia",
+      "hidden": true
+    },
+    {
+      "description": "egungo",
+      "type": "bool",
+      "name": "egungo",
+      "value": false,
+      "title": "egungo",
+      "hidden": true
+    },
+    {
+      "description": "egungocorpusa",
+      "type": "bool",
+      "name": "egungocorpusa",
+      "value": false,
+      "title": "egungocorpusa",
+      "hidden": true
+    },
+    {
+      "description": "epaitegiak",
+      "type": "bool",
+      "name": "epaitegiak",
+      "value": false,
+      "title": "epaitegiak",
+      "hidden": true
+    },
+    {
+      "description": "ereduzko",
+      "type": "bool",
+      "name": "ereduzko",
+      "value": false,
+      "title": "ereduzko",
+      "hidden": true
+    },
+    {
+      "description": "ereduzkodinamikoa",
+      "type": "bool",
+      "name": "ereduzkodinamikoa",
+      "value": false,
+      "title": "ereduzkodinamikoa",
+      "hidden": true
+    },
+    {
+      "description": "eurovoc",
+      "type": "bool",
+      "name": "eurovoc",
+      "value": false,
+      "title": "eurovoc",
+      "hidden": true
+    },
+    {
+      "description": "euskalklasikoak",
+      "type": "bool",
+      "name": "euskalklasikoak",
+      "value": false,
+      "title": "euskalklasikoak",
+      "hidden": true
+    },
+    {
+      "description": "euskalterm",
+      "type": "bool",
+      "name": "euskalterm",
+      "value": false,
+      "title": "euskalterm",
+      "hidden": true
+    },
+    {
+      "description": "farmazia",
+      "type": "bool",
+      "name": "farmazia",
+      "value": false,
+      "title": "farmazia",
+      "hidden": true
+    },
+    {
+      "description": "goihata",
+      "type": "bool",
+      "name": "goihata",
+      "value": false,
+      "title": "goihata",
+      "hidden": true
+    },
+    {
+      "description": "harluxet",
+      "type": "bool",
+      "name": "harluxet",
+      "value": false,
+      "title": "harluxet",
+      "hidden": true
+    },
+    {
+      "description": "hautalan",
+      "type": "bool",
+      "name": "hautalan",
+      "value": false,
+      "title": "hautalan",
+      "hidden": true
+    },
+    {
+      "description": "hbep",
+      "type": "bool",
+      "name": "hbep",
+      "value": false,
+      "title": "hbep",
+      "hidden": true
+    },
+    {
+      "description": "hikea",
+      "type": "bool",
+      "name": "hikea",
+      "value": false,
+      "title": "hikea",
+      "hidden": true
+    },
+    {
+      "description": "hobelex",
+      "type": "bool",
+      "name": "hobelex",
+      "value": false,
+      "title": "hobelex",
+      "hidden": true
+    },
+    {
+      "description": "intza",
+      "type": "bool",
+      "name": "intza",
+      "value": false,
+      "title": "intza",
+      "hidden": true
+    },
+    {
+      "description": "itzul",
+      "type": "bool",
+      "name": "itzul",
+      "value": false,
+      "title": "itzul",
+      "hidden": true
+    },
+    {
+      "description": "jakinbai",
+      "type": "bool",
+      "name": "jakinbai",
+      "value": false,
+      "title": "jakinbai",
+      "hidden": true
+    },
+    {
+      "description": "justizia",
+      "type": "bool",
+      "name": "justizia",
+      "value": false,
+      "title": "justizia",
+      "hidden": true
+    },
+    {
+      "description": "klasikoak",
+      "type": "bool",
+      "name": "klasikoak",
+      "value": false,
+      "title": "klasikoak",
+      "hidden": true
+    },
+    {
+      "description": "katalogazioa",
+      "type": "bool",
+      "name": "katalogazioa",
+      "value": false,
+      "title": "katalogazioa",
+      "hidden": true
+    },
+    {
+      "description": "labayru",
+      "type": "bool",
+      "name": "labayru",
+      "value": false,
+      "title": "labayru",
+      "hidden": true
+    },
+    {
+      "description": "lexikoarenbehatokia",
+      "type": "bool",
+      "name": "lexikoarenbehatokia",
+      "value": false,
+      "title": "lexikoarenbehatokia",
+      "hidden": true
+    },
+    {
+      "description": "librezale",
+      "type": "bool",
+      "name": "librezale",
+      "value": false,
+      "title": "librezale",
+      "hidden": true
+    },
+    {
+      "description": "literatura",
+      "type": "bool",
+      "name": "literatura",
+      "value": false,
+      "title": "literatura",
+      "hidden": true
+    },
+    {
+      "description": "lurhe",
+      "type": "bool",
+      "name": "lurhe",
+      "value": false,
+      "title": "lurhe",
+      "hidden": true
+    },
+    {
+      "description": "luret",
+      "type": "bool",
+      "name": "luret",
+      "value": false,
+      "title": "luret",
+      "hidden": true
+    },
+    {
+      "description": "mokoroa",
+      "type": "bool",
+      "name": "mokoroa",
+      "value": false,
+      "title": "mokoroa",
+      "hidden": true
+    },
+    {
+      "description": "morris",
+      "type": "bool",
+      "name": "morris",
+      "value": false,
+      "title": "morris",
+      "hidden": true
+    },
+    {
+      "description": "nolaerran",
+      "type": "bool",
+      "name": "nolaerran",
+      "value": false,
+      "title": "nolaerran",
+      "hidden": true
+    },
+    {
+      "description": "oeh",
+      "type": "bool",
+      "name": "oeh",
+      "value": false,
+      "title": "oeh",
+      "hidden": true
+    },
+    {
+      "description": "ostadar",
+      "type": "bool",
+      "name": "ostadar",
+      "value": false,
+      "title": "ostadar",
+      "hidden": true
+    },
+    {
+      "description": "pentsamenduarenklasikoak",
+      "type": "bool",
+      "name": "pentsamenduarenklasikoak",
+      "value": false,
+      "title": "pentsamenduarenklasikoak",
+      "hidden": true
+    },
+    {
+      "description": "uzei",
+      "type": "bool",
+      "name": "uzei",
+      "value": false,
+      "title": "uzei",
+      "hidden": true
+    },
+    {
+      "description": "wikipedia",
+      "type": "bool",
+      "name": "wikipedia",
+      "value": false,
+      "title": "wikipedia",
+      "hidden": true
+    },
+    {
+      "description": "xuxenweb",
+      "type": "bool",
+      "name": "xuxenweb",
+      "value": false,
+      "title": "xuxenweb",
+      "hidden": true
+    },
+    {
+      "description": "xxmendea",
+      "type": "bool",
+      "name": "xxmendea",
+      "value": false,
+      "title": "xxmendea",
+      "hidden": true
+    },
+    {
+      "description": "zehazki",
+      "type": "bool",
+      "name": "zehazki",
+      "value": false,
+      "title": "zehazki",
+      "hidden": true
+    },
+    {
+      "description": "zientziacorpusa",
+      "type": "bool",
+      "name": "zientziacorpusa",
+      "value": false,
+      "title": "zientziacorpusa",
+      "hidden": true
+    },
+    {
+      "description": "ztcorpusa",
+      "type": "bool",
+      "name": "ztcorpusa",
+      "value": false,
+      "title": "ztcorpusa",
+      "hidden": true
+    },
+    {
+      "description": "zthiztegia",
+      "type": "bool",
+      "name": "zthiztegia",
+      "value": false,
+      "title": "zthiztegia",
+      "hidden": true
+    },
+    {
+      "description": "zuzenbidecorpusa",
+      "type": "bool",
+      "name": "zuzenbidecorpusa",
+      "value": false,
+      "title": "zuzenbidecorpusa",
+      "hidden": true
+    },
+    {
+      "description": "adorez_enter",
+      "type": "bool",
+      "name": "adorez_enter",
+      "value": false,
+      "title": "adorez_enter",
+      "hidden": true
+    },
+    {
+      "description": "aunamendi_enter",
+      "type": "bool",
+      "name": "aunamendi_enter",
+      "value": false,
+      "title": "aunamendi_enter",
+      "hidden": true
+    },
+    {
+      "description": "automobilgintza_enter",
+      "type": "bool",
+      "name": "automobilgintza_enter",
+      "value": false,
+      "title": "automobilgintza_enter",
+      "hidden": true
+    },
+    {
+      "description": "automatikoak_enter",
+      "type": "bool",
+      "name": "automatikoak_enter",
+      "value": false,
+      "title": "automatikoak_enter",
+      "hidden": true
+    },
+    {
+      "description": "batua_enter",
+      "type": "bool",
+      "name": "batua_enter",
+      "value": true,
+      "title": "batua_enter",
+      "hidden": true
+    },
+    {
+      "description": "bergara_enter",
+      "type": "bool",
+      "name": "bergara_enter",
+      "value": false,
+      "title": "bergara_enter",
+      "hidden": true
+    },
+    {
+      "description": "berria_enter",
+      "type": "bool",
+      "name": "berria_enter",
+      "value": false,
+      "title": "berria_enter",
+      "hidden": true
+    },
+    {
+      "description": "bfaterminologikoa_enter",
+      "type": "bool",
+      "name": "bfaterminologikoa_enter",
+      "value": false,
+      "title": "bfaterminologikoa_enter",
+      "hidden": true
+    },
+    {
+      "description": "bizkaiera_enter",
+      "type": "bool",
+      "name": "bizkaiera_enter",
+      "value": false,
+      "title": "bizkaiera_enter",
+      "hidden": true
+    },
+    {
+      "description": "bostmila_enter",
+      "type": "bool",
+      "name": "bostmila_enter",
+      "value": false,
+      "title": "bostmila_enter",
+      "hidden": true
+    },
+    {
+      "description": "consumer_enter",
+      "type": "bool",
+      "name": "consumer_enter",
+      "value": false,
+      "title": "consumer_enter",
+      "hidden": true
+    },
+    {
+      "description": "corpeus_enter",
+      "type": "bool",
+      "name": "corpeus_enter",
+      "value": false,
+      "title": "corpeus_enter",
+      "hidden": true
+    },
+    {
+      "description": "danobat_enter",
+      "type": "bool",
+      "name": "danobat_enter",
+      "value": false,
+      "title": "danobat_enter",
+      "hidden": true
+    },
+    {
+      "description": "ehuskaratuak_enter",
+      "type": "bool",
+      "name": "ehuskaratuak_enter",
+      "value": false,
+      "title": "ehuskaratuak_enter",
+      "hidden": true
+    },
+    {
+      "description": "eibar_enter",
+      "type": "bool",
+      "name": "eibar_enter",
+      "value": false,
+      "title": "eibar_enter",
+      "hidden": true
+    },
+    {
+      "description": "elebila_enter",
+      "type": "bool",
+      "name": "elebila_enter",
+      "value": false,
+      "title": "elebila_enter",
+      "hidden": true
+    },
+    {
+      "description": "elhuyar_enter",
+      "type": "bool",
+      "name": "elhuyar_enter",
+      "value": true,
+      "title": "elhuyar_enter",
+      "hidden": true
+    },
+    {
+      "description": "elhuyarwebcorpusaeu_enter",
+      "type": "bool",
+      "name": "elhuyarwebcorpusaeu_enter",
+      "value": false,
+      "title": "elhuyarwebcorpusaeu_enter",
+      "hidden": true
+    },
+    {
+      "description": "elhuyarwebcorpusaeues_enter",
+      "type": "bool",
+      "name": "elhuyarwebcorpusaeues_enter",
+      "value": false,
+      "title": "elhuyarwebcorpusaeues_enter",
+      "hidden": true
+    },
+    {
+      "description": "elhuyarwebcorpusakonbinazioak_enter",
+      "type": "bool",
+      "name": "elhuyarwebcorpusakonbinazioak_enter",
+      "value": false,
+      "title": "elhuyarwebcorpusakonbinazioak_enter",
+      "hidden": true
+    },
+    {
+      "description": "energia_enter",
+      "type": "bool",
+      "name": "energia_enter",
+      "value": false,
+      "title": "energia_enter",
+      "hidden": true
+    },
+    {
+      "description": "egungo_enter",
+      "type": "bool",
+      "name": "egungo_enter",
+      "value": false,
+      "title": "egungo_enter",
+      "hidden": true
+    },
+    {
+      "description": "egungocorpusa_enter",
+      "type": "bool",
+      "name": "egungocorpusa_enter",
+      "value": false,
+      "title": "egungocorpusa_enter",
+      "hidden": true
+    },
+    {
+      "description": "epaitegiak_enter",
+      "type": "bool",
+      "name": "epaitegiak_enter",
+      "value": false,
+      "title": "epaitegiak_enter",
+      "hidden": true
+    },
+    {
+      "description": "ereduzko_enter",
+      "type": "bool",
+      "name": "ereduzko_enter",
+      "value": false,
+      "title": "ereduzko_enter",
+      "hidden": true
+    },
+    {
+      "description": "ereduzkodinamikoa_enter",
+      "type": "bool",
+      "name": "ereduzkodinamikoa_enter",
+      "value": false,
+      "title": "ereduzkodinamikoa_enter",
+      "hidden": true
+    },
+    {
+      "description": "eurovoc_enter",
+      "type": "bool",
+      "name": "eurovoc_enter",
+      "value": false,
+      "title": "eurovoc_enter_enter",
+      "hidden": true
+    },
+    {
+      "description": "euskalklasikoak_enter",
+      "type": "bool",
+      "name": "euskalklasikoak_enter",
+      "value": false,
+      "title": "euskalklasikoak_enter",
+      "hidden": true
+    },
+    {
+      "description": "euskalterm_enter",
+      "type": "bool",
+      "name": "euskalterm_enter",
+      "value": true,
+      "title": "euskalterm_enter",
+      "hidden": true
+    },
+    {
+      "description": "farmazia_enter",
+      "type": "bool",
+      "name": "farmazia_enter",
+      "value": false,
+      "title": "farmazia_enter",
+      "hidden": true
+    },
+    {
+      "description": "goihata_enter",
+      "type": "bool",
+      "name": "goihata_enter",
+      "value": false,
+      "title": "goihata_enter",
+      "hidden": true
+    },
+    {
+      "description": "harluxet_enter",
+      "type": "bool",
+      "name": "harluxet_enter",
+      "value": false,
+      "title": "harluxet_enter",
+      "hidden": true
+    },
+    {
+      "description": "hautalan_enter",
+      "type": "bool",
+      "name": "hautalan_enter",
+      "value": false,
+      "title": "hautalan_enter",
+      "hidden": true
+    },
+    {
+      "description": "hbep_enter",
+      "type": "bool",
+      "name": "hbep_enter",
+      "value": false,
+      "title": "hbep_enter",
+      "hidden": true
+    },
+    {
+      "description": "hikea_enter",
+      "type": "bool",
+      "name": "hikea_enter",
+      "value": false,
+      "title": "hikea_enter",
+      "hidden": true
+    },
+    {
+      "description": "hobelex_enter",
+      "type": "bool",
+      "name": "hobelex_enter",
+      "value": false,
+      "title": "hobelex_enter",
+      "hidden": true
+    },
+    {
+      "description": "intza_enter",
+      "type": "bool",
+      "name": "intza_enter",
+      "value": false,
+      "title": "intza_enter",
+      "hidden": true
+    },
+    {
+      "description": "itzul_enter",
+      "type": "bool",
+      "name": "itzul_enter",
+      "value": true,
+      "title": "itzul_enter",
+      "hidden": true
+    },
+    {
+      "description": "jakinbai_enter",
+      "type": "bool",
+      "name": "jakinbai_enter",
+      "value": false,
+      "title": "jakinbai_enter",
+      "hidden": true
+    },
+    {
+      "description": "justizia_enter",
+      "type": "bool",
+      "name": "justizia_enter",
+      "value": false,
+      "title": "justizia_enter",
+      "hidden": true
+    },
+    {
+      "description": "klasikoak_enter",
+      "type": "bool",
+      "name": "klasikoak_enter",
+      "value": false,
+      "title": "klasikoak_enter",
+      "hidden": true
+    },
+    {
+      "description": "katalogazioa_enter",
+      "type": "bool",
+      "name": "katalogazioa_enter",
+      "value": false,
+      "title": "katalogazioa_enter",
+      "hidden": true
+    },
+    {
+      "description": "labayru_enter",
+      "type": "bool",
+      "name": "labayru_enter",
+      "value": false,
+      "title": "labayru_enter",
+      "hidden": true
+    },
+    {
+      "description": "lexikoarenbehatokia_enter",
+      "type": "bool",
+      "name": "lexikoarenbehatokia_enter",
+      "value": false,
+      "title": "lexikoarenbehatokia_enter",
+      "hidden": true
+    },
+    {
+      "description": "librezale_enter",
+      "type": "bool",
+      "name": "librezale_enter",
+      "value": false,
+      "title": "librezale_enter",
+      "hidden": true
+    },
+    {
+      "description": "literatura_enter",
+      "type": "bool",
+      "name": "literatura_enter",
+      "value": false,
+      "title": "literatura_enter",
+      "hidden": true
+    },
+    {
+      "description": "lurhe_enter",
+      "type": "bool",
+      "name": "lurhe_enter",
+      "value": false,
+      "title": "lurhe_enter",
+      "hidden": true
+    },
+    {
+      "description": "luret_enter",
+      "type": "bool",
+      "name": "luret_enter",
+      "value": false,
+      "title": "luret_enter",
+      "hidden": true
+    },
+    {
+      "description": "mokoroa_enter",
+      "type": "bool",
+      "name": "mokoroa_enter",
+      "value": false,
+      "title": "mokoroa_enter",
+      "hidden": true
+    },
+    {
+      "description": "morris_enter",
+      "type": "bool",
+      "name": "morris_enter",
+      "value": false,
+      "title": "morris_enter",
+      "hidden": true
+    },
+    {
+      "description": "nolaerran_enter",
+      "type": "bool",
+      "name": "nolaerran_enter",
+      "value": false,
+      "title": "nolaerran_enter",
+      "hidden": true
+    },
+    {
+      "description": "oeh_enter",
+      "type": "bool",
+      "name": "oeh_enter",
+      "value": false,
+      "title": "oeh_enter",
+      "hidden": true
+    },
+    {
+      "description": "ostadar_enter",
+      "type": "bool",
+      "name": "ostadar_enter",
+      "value": false,
+      "title": "ostadar_enter",
+      "hidden": true
+    },
+    {
+      "description": "pentsamenduarenklasikoak_enter",
+      "type": "bool",
+      "name": "pentsamenduarenklasikoak_enter",
+      "value": false,
+      "title": "pentsamenduarenklasikoak_enter",
+      "hidden": true
+    },
+    {
+      "description": "uzei_enter",
+      "type": "bool",
+      "name": "uzei_enter",
+      "value": false,
+      "title": "uzei_enter",
+      "hidden": true
+    },
+    {
+      "description": "wikipedia_enter",
+      "type": "bool",
+      "name": "wikipedia_enter",
+      "value": false,
+      "title": "wikipedia_enter",
+      "hidden": true
+    },
+    {
+      "description": "xuxenweb_enter",
+      "type": "bool",
+      "name": "xuxenweb_enter",
+      "value": false,
+      "title": "xuxenweb_enter",
+      "hidden": true
+    },
+    {
+      "description": "xxmendea_enter",
+      "type": "bool",
+      "name": "xxmendea_enter",
+      "value": false,
+      "title": "xxmendea_enter",
+      "hidden": true
+    },
+    {
+      "description": "zehazki_enter",
+      "type": "bool",
+      "name": "zehazki_enter",
+      "value": false,
+      "title": "zehazki_enter",
+      "hidden": true
+    },
+    {
+      "description": "zientziacorpusa_enter",
+      "type": "bool",
+      "name": "zientziacorpusa_enter",
+      "value": false,
+      "title": "zientziacorpusa_enter",
+      "hidden": true
+    },
+    {
+      "description": "ztcorpusa_enter",
+      "type": "bool",
+      "name": "ztcorpusa_enter",
+      "value": false,
+      "title": "ztcorpusa_enter",
+      "hidden": true
+    },
+    {
+      "description": "zthiztegia_enter",
+      "type": "bool",
+      "name": "zthiztegia_enter",
+      "value": true,
+      "title": "zthiztegia_enter",
+      "hidden": true
+    },
+    {
+      "description": "zuzenbidecorpusa_enter",
+      "type": "bool",
+      "name": "zuzenbidecorpusa_enter",
+      "value": false,
+      "title": "zuzenbidecorpusa_enter",
+      "hidden": true
+    },
+    {
+      "description": "adorez_shift+enter",
+      "type": "bool",
+      "name": "adorez_shift+enter",
+      "value": false,
+      "title": "adorez_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "batua_shift+enter",
+      "type": "bool",
+      "name": "batua_shift+enter",
+      "value": true,
+      "title": "batua_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "bostmila_shift+enter",
+      "type": "bool",
+      "name": "bostmila_shift+enter",
+      "value": false,
+      "title": "bostmila_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "danobat_shift+enter",
+      "type": "bool",
+      "name": "danobat_shift+enter",
+      "value": false,
+      "title": "danobat_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "elhuyar_shift+enter",
+      "type": "bool",
+      "name": "elhuyar_shift+enter",
+      "value": true,
+      "title": "elhuyar_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "euskalterm_shift+enter",
+      "type": "bool",
+      "name": "euskalterm_shift+enter",
+      "value": true,
+      "title": "euskalterm_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "intza_shift+enter",
+      "type": "bool",
+      "name": "intza_shift+enter",
+      "value": false,
+      "title": "intza_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "labayru_shift+enter",
+      "type": "bool",
+      "name": "labayru_shift+enter",
+      "value": false,
+      "title": "labayru_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "morris_shift+enter",
+      "type": "bool",
+      "name": "morris_shift+enter",
+      "value": false,
+      "title": "morris_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "oeh_shift+enter",
+      "type": "bool",
+      "name": "oeh_shift+enter",
+      "value": false,
+      "title": "oeh_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "uzei_shift+enter",
+      "type": "bool",
+      "name": "uzei_shift+enter",
+      "value": false,
+      "title": "uzei_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "zehazki_shift+enter",
+      "type": "bool",
+      "name": "zehazki_shift+enter",
+      "value": false,
+      "title": "zehazki_shift+enter",
+      "hidden": true
+    },
+    {
+      "description": "adorez_ctrl+enter",
+      "type": "bool",
+      "name": "adorez_ctrl+enter",
+      "value": true,
+      "title": "adorez_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "batua_ctrl+enter",
+      "type": "bool",
+      "name": "batua_ctrl+enter",
+      "value": true,
+      "title": "batua_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "bostmila_ctrl+enter",
+      "type": "bool",
+      "name": "bostmila_ctrl+enter",
+      "value": true,
+      "title": "bostmila_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "danobat_ctrl+enter",
+      "type": "bool",
+      "name": "danobat_ctrl+enter",
+      "value": true,
+      "title": "danobat_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "elhuyar_ctrl+enter",
+      "type": "bool",
+      "name": "elhuyar_ctrl+enter",
+      "value": true,
+      "title": "elhuyar_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "euskalterm_ctrl+enter",
+      "type": "bool",
+      "name": "euskalterm_ctrl+enter",
+      "value": true,
+      "title": "euskalterm_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "intza_ctrl+enter",
+      "type": "bool",
+      "name": "intza_ctrl+enter",
+      "value": false,
+      "title": "intza_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "labayru_ctrl+enter",
+      "type": "bool",
+      "name": "labayru_ctrl+enter",
+      "value": true,
+      "title": "labayru_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "morris_ctrl+enter",
+      "type": "bool",
+      "name": "morris_ctrl+enter",
+      "value": true,
+      "title": "morris_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "oeh_ctrl+enter",
+      "type": "bool",
+      "name": "oeh_ctrl+enter",
+      "value": false,
+      "title": "oeh_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "uzei_ctrl+enter",
+      "type": "bool",
+      "name": "uzei_ctrl+enter",
+      "value": true,
+      "title": "uzei_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "zehazki_ctrl+enter",
+      "type": "bool",
+      "name": "zehazki_ctrl+enter",
+      "value": false,
+      "title": "zehazki_ctrl+enter",
+      "hidden": true
+    },
+    {
+      "description": "denbora",
+      "type": "integer",
+      "name": "denbora",
+      "value": "10",
+      "title": "denbora",
+      "hidden": true
+    }
+  ]
+}

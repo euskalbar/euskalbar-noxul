@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="frame.css" rel="stylesheet"></link>
+    <link href="./jquery-ui.css" rel="stylesheet"></link>
+    <script src="./jquery-1.12.3.js"></script>
+    <script src="./jquery-ui.js"></script>
+    <script src="./dicts.js"></script>
+  </head>
+  <body>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $('#bilatzailea').keyup(function(){
+        if($(this).val().length !=0)
+            $( ".buttonHizkuntza" ).prop( "disabled", false );        
+        else
+             $( ".buttonHizkuntza" ).prop( "disabled", true );
+    });
+});
+</script>
+
+
+<button id="euskalbar_icon" class="hobespenakButton"><img src="setting-16.png"></button>
+<button id="baliabideak_icon" class="baliabideakButton"><img src="icon-16.png"></button>
+  	<label for="hizkuntza"></label>
+    <select name="hizkuntza" id="hizkuntza" title="Hizkuntza" onchange="hizkuntza_aldatu();">
+        <option value="eu>ar">EU>AR</option>
+        <option value="ar>eu">AR>EU</option>
+        <option value="eu>de">EU>DE</option>
+        <option value="de>eu">DE>EU</option>
+        <option value="eu>en">EU>EN</option>
+        <option value="en>eu">EN>EU</option>
+        <option value="eu>es">EU>ES</option>
+        <option value="es>eu">ES>EU</option>
+        <option value="eu>fr">EU>FR</option>
+        <option value="fr>eu">FR>EU</option>
+        <option value="eu>hi">EU>HI</option>
+        <option value="hi>eu">HI>EU</option>
+        <option value="eu>jp">EU>JP</option>
+        <option value="jp>eu">JP>EU</option>
+        <option value="eu>la">EU>LA</option>
+        <option value="la>eu">LA>EU</option>
+        <option value="eu>oc">EU>OC</option>
+        <option value="oc>eu">OC>EU</option>
+        <option value="eu>sw">EU>SW</option>
+        <option value="sw>eu">SW>EU</option>
+        <option value="eu>zh">EU>ZH</option>
+        <option value="zh>eu">ZH>EU</option>
+    </select>
+    <label for="bilatzailea"></label>
+    <input type="text" id="bilatzailea" placeholder="Bilatu ..." name="bilatzailea"> 
+   <script type="text/javascript" src="frame.js"></script>
+  </body>
+</html>
